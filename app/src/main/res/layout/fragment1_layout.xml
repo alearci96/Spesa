@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:text="Lista Spesa:"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btnNavFrag1"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="5dp"
+        android:text="SPESA" />
+
+    <Button
+        android:id="@+id/btnNavFrag2"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="SCADENZE" />
+
+    <Button
+        android:id="@+id/btnNavFrag3"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:text="FRIGO" />
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTitle"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp"
+        android:text="Nome:"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTitle"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="20dp">
+    </EditText>
+
+    <Button
+        android:id="@+id/add_food_general"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTitle"
+        android:layout_marginTop="45dp"
+        android:layout_toRightOf="@+id/edit_name"
+        android:layout_marginLeft="5dp"
+        android:text="+"
+        android:textSize="20sp" />
+
+    <ListView
+        android:id="@+id/listview_general"
+        android:layout_width="200dp"
+        android:layout_height="390dp"
+        android:layout_below="@+id/add_food_general"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true">
+    </ListView>
+
+    <ListView
+        android:id="@+id/listview_particular"
+        android:layout_width="200dp"
+        android:layout_height="390dp"
+        android:layout_below="@+id/add_food_general"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:choiceMode="multipleChoice">
+    </ListView>
+
+    <Button
+        android:id="@+id/clear_spesa"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/listview_particular"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:text="CANCELLA SPESA"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/spesa_completed"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/listview_particular"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="SPESA TERMINATA"
+        android:textSize="13sp" />
+
+</RelativeLayout>
