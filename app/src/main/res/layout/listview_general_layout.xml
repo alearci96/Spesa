@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listview_general_layout"
+    android:layout_width="200dp"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100">
+
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:text="TextView1"
+        android:textAlignment="center" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="40dp"
+        android:layout_height="60dp"/>
+
+
+</LinearLayout>
