@@ -54,7 +54,7 @@ public class Fragment2 extends Fragment {
         Log.d(TAG, peopleList.toString());
         Log.d(TAG, foodList.toString());
         CustomArrayAdapter adapter = new CustomArrayAdapter(getActivity(),R.layout.adapter_view_layout, peopleList);
-        CustomArrayAdapter_part adapter_part = new CustomArrayAdapter_part(getActivity(),R.layout.listview_particular_ayout, foodList);
+        CustomArrayAdapter_part adapter_part = new CustomArrayAdapter_part(getActivity(),R.layout.listview_particular_layout, foodList);
         myListView.setAdapter(adapter);
         myListView_part.setAdapter(adapter_part);
 

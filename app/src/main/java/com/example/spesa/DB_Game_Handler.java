@@ -16,6 +16,7 @@ public class DB_Game_Handler extends SQLiteOpenHelper {
     private static final String TABLE_GAME = "game";
     private static final String KEY_ID = "id";
     private static final String KEY_NAME = "name";
+    private static final String KEY_MARK = "mark";
 
     public DB_Game_Handler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,7 +27,7 @@ public class DB_Game_Handler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_GAME_TABLE = "CREATE TABLE " + TABLE_GAME + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT" + ")";
+                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_NAME + " TEXT," + KEY_MARK + " TEXT" + ")";
         db.execSQL(CREATE_GAME_TABLE);
     }
 
@@ -45,7 +46,8 @@ public class DB_Game_Handler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, game.getName()); // Food Name
+        values.put(KEY_NAME, game.getName()); // Name
+        values.put(KEY_MARK, game.getMark()); // Mark
 
         // Inserting Row
         db.insert(TABLE_GAME, null, values);
@@ -64,18 +66,18 @@ public class DB_Game_Handler extends SQLiteOpenHelper {
     }
 
     // code to get the single food
-    Food getGame(int id) {
+    Game getGame(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_GAME, new String[] { KEY_ID,
-                        KEY_NAME}, KEY_ID + "=?",
+                        KEY_NAME, KEY_MARK}, KEY_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
         if (cursor != null)
             cursor.moveToFirst();
 
-        Food food = new Food(Integer.parseInt(cursor.getString(0)), cursor.getString(1));
-        // return food
-        return food;
+        Game game = new Game(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2));
+        // return game
+        return game;
     }
 
     // code to get all foods in a list view
@@ -94,11 +96,11 @@ public class DB_Game_Handler extends SQLiteOpenHelper {
                 Game game = new Game("Minecraft", "10");
                 game.setId(Integer.parseInt(cursor.getString(0)));
                 game.setName(cursor.getString(1));
+                game.setMark(cursor.getString(2));
                 // Adding food to list
                 gameList.add(game);
             } while (cursor.moveToNext());
         }
-
         // return food list
         return gameList;
     }
@@ -109,6 +111,7 @@ public class DB_Game_Handler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(KEY_NAME, game.getName());
+        values.put(KEY_MARK, game.getMark());
 
         // updating row
         return db.update(TABLE_GAME, values, KEY_ID + " = ?",

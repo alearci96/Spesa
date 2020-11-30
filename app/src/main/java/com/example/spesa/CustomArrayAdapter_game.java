@@ -15,7 +15,7 @@ import java.util.List;
 
 public class CustomArrayAdapter_game extends ArrayAdapter<Game> {
 
-    private static final String TAG = "CustomArrayAdapter_part";
+    private static final String TAG = "CustomArrayAdapter_game";
     private Context myContext;
     int myResource;
 
@@ -49,8 +49,8 @@ public class CustomArrayAdapter_game extends ArrayAdapter<Game> {
         LayoutInflater inflater = LayoutInflater.from(myContext);
         convertView = inflater.inflate(myResource, parent, false);
 
-        TextView tvname = (TextView) convertView.findViewById(R.id.textView1);
-        TextView tvmark = (TextView) convertView.findViewById(R.id.textView2);
+        TextView tvname = (TextView) convertView.findViewById(R.id.textView21);
+        TextView tvmark = (TextView) convertView.findViewById(R.id.textView22);
         tvname.setText(name);
         tvmark.setText(mark);
 
