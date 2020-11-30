@@ -26,28 +26,39 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity_layout);
-        Button btnNavMainActivity = (Button) findViewById(R.id.btnNavMainActivity);
+        btnNavMainActivity = (Button) findViewById(R.id.btnNavMainActivity);
         edit_name = (EditText) findViewById(R.id.edit_name);
         add_Game = (Button) findViewById(R.id.add_game);
-        com.example.spesa.DB_Part_Handler db_game = new com.example.spesa.DB_Game_Handler(getActivity());
+        listview_gamelist = (ListView) findViewById(R.id.listview_gamelist);
+        com.example.spesa.DB_Game_Handler db_game = new com.example.spesa.DB_Game_Handler(this);
 
         Log.d(TAG, "onCreate: Started.");
 
-        btnNavMainActivity.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        List<String> game_list = new ArrayList<String>();
-        ArrayAdapter<String> arrayAdapter_part = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, game_list);
-        listview_gamelist.setAdapter(arrayAdapter_part);
+        Game Game1 = new Game("TLOU","10");
+        Game Game2 = new Game("COD","8");
+        ArrayList<Game> game_list = new ArrayList<Game>();
+        game_list.add(Game1);
+        game_list.add(Game2);
+
+        // ArrayAdapter<String> arrayAdapter_game = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, game_list);
+        CustomArrayAdapter_game arrayAdapter_game = new CustomArrayAdapter_game(this, R.layout.listview_gamelist_layout, game_list);
+        listview_gamelist.setAdapter(arrayAdapter_game);
         // Food pasta = new Food(0,"Pasta");
         // db_part.addFood(pasta);
         List<com.example.spesa.Game> games = db_game.getAllGame();
         for (com.example.spesa.Game gm : games) {
-            game_list.add(gm.getName());
+            game_list.add(gm);
         }
-        arrayAdapter_part.notifyDataSetChanged();
+        arrayAdapter_game.notifyDataSetChanged();
+
+        btnNavMainActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
     }
 }

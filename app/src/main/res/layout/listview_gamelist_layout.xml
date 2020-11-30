@@ -6,7 +6,7 @@
     android:weightSum="100">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textView21"
         android:gravity="center"
         android:textAlignment="center"
         android:text="TextView1"
@@ -15,7 +15,7 @@
         android:layout_weight="33.3"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView22"
         android:text="TextView2"
         android:gravity="center"
         android:layout_width="match_parent"
