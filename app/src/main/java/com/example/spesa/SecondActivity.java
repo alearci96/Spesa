@@ -20,6 +20,7 @@ public class SecondActivity extends AppCompatActivity {
     Button btnNavMainActivity;
     Button add_Game;
     EditText edit_name;
+    EditText edit_mark;
     ListView listview_gamelist;
 
     @Override
@@ -59,6 +60,27 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        add_Game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Inserting Game
+                Log.d("Insert: ", "Inserting ..");
+                String name_game = edit_name.getText().toString();
+                String mark_game = edit_mark.getText().toString();
+                db_game.addGame(new com.example.spesa.Game(name_game, mark_game));
+
+                // AGGIORNO LISTA
+                List<com.example.spesa.Game> games = db_game.getAllGame();
+                game_list.clear();
+                for (com.example.spesa.Game gm : games) {
+                    game_list.add(gm);
+                }
+                CustomArrayAdapter_game.notifyDataSetChanged();
+                edit_name.setText("");
+                edit_mark.setText("");
+            }
+
+        });
 
     }
 }
